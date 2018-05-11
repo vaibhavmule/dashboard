@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<!-- CONTENT START -->
+<div class="user-dashboard">
+    <h1>{{ model.__class__.__name__ }} Model <a href="#" class="add-project" data-toggle="modal">
+        <span class="fa fa-plus"></span> Save Model </a></h1>
+    <div class="row">
+        
+        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+
+            <div class="sales">
+                <h2>Name</h2>
+
+                <div class="search">
+                    <input type="text" value="{{ model.name }}">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+            <div class="sales">
+                <h2>Email</h2>
+
+                <div class="search">
+                    <input type="text" value="{{ model.email }}">
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+            <br>
+            <div class="sales">
+                <h2>Password</h2>
+
+                <div class="search">
+                    <input type="text" value="{{ model.password }}">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
