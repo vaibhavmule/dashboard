@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+<!-- CONTENT START -->
+<div class="user-dashboard">
+    <h1>{{ model.__name__ }} Model
+        <a href="#" class="add-project" data-toggle="modal">
+            <span class="fa fa-plus"></span> Save Model </a>
+    </h1>
+    <div class="row">
+
+        {% for model in models %}
+        <div class="col-md-12 col-sm-12 col-xs-12 gutter">
+            <br>
+            <div class="sales">
+                <h2>{{ model.id }}</h2>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+</div>
+{% endblock %}

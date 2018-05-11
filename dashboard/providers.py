@@ -1,6 +1,7 @@
 ''' A User Model Service Provider '''
 from masonite.provider import ServiceProvider
 import os
+from config.dashboard import MODELS
 
 package_directory = os.path.dirname(os.path.realpath(__file__))
 
@@ -9,6 +10,7 @@ class DashboardProvider(ServiceProvider):
     wsgi = False 
 
     def register(self):
+        self.app.bind('DashboardModels', MODELS)
 
         self.app.make('Storage').STATICFILES.update({
             os.path.join(package_directory, 'static/'): '_dashboard/'
@@ -16,7 +18,7 @@ class DashboardProvider(ServiceProvider):
 
         # Register Links:
         self.app.bind('DashboardNavLinks', {
-            'Dashboard': 'http://google.com',
+            'Dashboard': '/dashboard',
             'Export': 'http://google.com'
         })
 
