@@ -16,4 +16,4 @@ class DashboardController:
     def show_all(self):
         model = request().app().make('DashboardModels')[request().param('model')]
         models = model.all()
-        return view('/dashboard/templates/show', {'model': model, 'models': models})
+        return view('/dashboard/templates/show', {'modelclass': model, 'models': models})

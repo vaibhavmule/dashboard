@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <!-- CONTENT START -->
 <div class="user-dashboard">
-    <h1>{{ model.__name__ }} Model
+    <h1>{{ modelclass.__name__ }} Model
         <a href="#" class="add-project" data-toggle="modal">
             <span class="fa fa-plus"></span> Save Model </a>
     </h1>
@@ -11,7 +11,9 @@
         <div class="col-md-12 col-sm-12 col-xs-12 gutter">
             <br>
             <div class="sales">
-                <h2>{{ model.id }}</h2>
+                <a href="/dashboard/{{ modelclass.__name__.lower()}}/{{model.id}}">
+                 <h2>{{ model.id }}</h2>
+                </a>
             </div>
         </div>
         {% endfor %}
