@@ -20,5 +20,15 @@ class DashboardProvider(ServiceProvider):
             'Export': 'http://google.com'
         })
 
+        Export.register(self.app)
+
     def boot(self, Storage, ViewClass):
         ViewClass.composer(['/dashboard*'], {'nav_links': self.app.collect('*NavLinks')})
+
+class Export:
+
+    def register(app):
+        app.bind('AnotherProviderNavLinks', {
+            'Export': 'http://google.com',
+            'CSV': 'http://google.com'
+        })
