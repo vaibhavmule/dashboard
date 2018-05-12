@@ -19,9 +19,6 @@ class DashboardController:
             table_name = model.__name__ + 's'
 
         conn = DB.get_schema_manager().list_table_columns(table_name.lower())
-        for key, value in conn.items():
-            print('key:', key)
-            print('value:', value.get_type())
         
         model = model.find(request().param('id'))
         return view('/dashboard/templates/single', {'model': model, 'getattr': getattr, 'model_schema': conn.items()})
