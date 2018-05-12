@@ -1,5 +1,9 @@
 ''' Welcome The User To Masonite '''
 from app.User import User
+from config.database import DB
+
+
+
 
 class DashboardController:
 
@@ -9,11 +13,33 @@ class DashboardController:
     
     def single(self):
         model = request().app().make('DashboardModels')[request().param('model')]
+        if model.__table__:
+            table_name = model.__table__
+        else:
+            table_name = model.__name__ + 's'
+
+        conn = DB.get_schema_manager().list_table_columns(table_name.lower())
+        for key, value in conn.items():
+            print('key:', key)
+            print('value:', value.get_type())
+        
         model = model.find(request().param('id'))
-        print(model)
-        return view('/dashboard/templates/single', {'model': model})
+        return view('/dashboard/templates/single', {'model': model, 'getattr': getattr, 'model_schema': conn.items()})
 
     def show_all(self):
         model = request().app().make('DashboardModels')[request().param('model')]
         models = model.all()
         return view('/dashboard/templates/show', {'modelclass': model, 'models': models})
+
+    def update(self):
+        model = request().app().make('DashboardModels')[request().param('model')]()
+
+        model = model.find(request().param('id'))
+        
+        for key in request().all():
+            if hasattr(model, key):
+                setattr(model, key, request().input(key))
+
+        model.save()
+        return request().redirect('/dashboard/{}/{}'.format(model.__class__.__name__.lower(), request().param('id'))) \
+            .session.flash('message', 'Updated Successfully')

@@ -18,7 +18,7 @@ class DashboardProvider(ServiceProvider):
 
         # Register Links:
         self.app.bind('DashboardNavLinks', {
-            'Dashboard': '/dashboard',
+            'Models': '/dashboard',
             'Export': 'http://google.com'
         })
 
