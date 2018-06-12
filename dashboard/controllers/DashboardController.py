@@ -10,6 +10,7 @@ class DashboardController:
     def show(self):
         models = request().app().make('DashboardModels')
         return view('/dashboard/templates/index', {'models': models})
+        # return view('index')
     
     def single(self):
         model = request().app().make('DashboardModels')[request().param('model')]

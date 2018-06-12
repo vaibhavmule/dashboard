@@ -2,6 +2,7 @@
 from masonite.provider import ServiceProvider
 import os
 from config.dashboard import MODELS
+from .links import ExportLink, ModelLink
 
 package_directory = os.path.dirname(os.path.realpath(__file__))
 
@@ -17,10 +18,7 @@ class DashboardProvider(ServiceProvider):
         })
 
         # Register Links:
-        self.app.bind('DashboardNavLinks', {
-            'Models': '/dashboard',
-            'Export': 'http://google.com'
-        })
+        self.app.bind('DashboardNavLinks', [ModelLink()])
 
         Export.register(self.app)
 
@@ -30,7 +28,7 @@ class DashboardProvider(ServiceProvider):
 class Export:
 
     def register(app):
-        app.bind('AnotherProviderNavLinks', {
-            'Export': 'http://google.com',
-            'CSV': 'http://google.com'
-        })
+        # app.bind('AnotherProviderNavLinks', [
+        #     ExportLink()
+        # ])
+        pass

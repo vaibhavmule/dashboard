@@ -247,7 +247,7 @@ li,ul{
 }
 
 .add-project::before {
-    background: rgba(0, 0, 0, 0) url("../images/plus.png") no-repeat scroll 0 0;
+    /* background: rgba(0, 0, 0, 0) url() no-repeat scroll 0 0; */
     content: "";
     ;
     height: 12px;
@@ -330,7 +330,7 @@ li,ul{
     font-size: 15px;
     padding: 15px 9px;
     width: 100%;
-    background: rgba(0, 0, 0, 0) url("../images/search.png") no-repeat scroll 99% 12px;
+    /* background: rgba(0, 0, 0, 0) url("../images/search.png") no-repeat scroll 99% 12px; */
     color: #8492af;
 }
 

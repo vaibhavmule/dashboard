@@ -15,16 +15,16 @@
                 <div class="logo">
                     <a hef="home.html">
                         <img src="/_dashboard/images/logo.png" alt="merkery_logo" class="hidden-xs hidden-sm">
-                        <img src="http://jskrishna.com/work/merkury/images/circle-logo.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                     </a>
                 </div>
                 <div class="navi">
                     <ul>
-                        {% for key, value in nav_links.items() %} {% for link, url in value.items() %}
+                        {% for key, value in nav_links.items() %} 
+                        {% for link in value %}
                         <li>
-                            <a href="{{ url }}">
+                            <a href="{{ link.url }}">
                                 <i class="fa fa-home" aria-hidden="true"></i>
-                                <span class="hidden-xs hidden-sm">{{ link }}</span>
+                                <span class="hidden-xs hidden-sm">{{ link.display }}</span>
                             </a>
                         </li>
                         {% endfor %} {% endfor %}

@@ -4,6 +4,8 @@ setup(
     name='masonite-dashboard',
     packages=[
         'dashboard',
+        'dashboard.controllers',
+        'dashboard',
     ],
     version='0.0.1',
     install_requires=[
