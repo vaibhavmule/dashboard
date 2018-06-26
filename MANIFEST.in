@@ -1,3 +1,2 @@
-include dashboard/templates/*
+include dashboard/templates/dashbaord/*
 include dashboard/static/*
-include dashboard/static/images/*
