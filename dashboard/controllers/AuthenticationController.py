@@ -7,7 +7,7 @@ class AuthenticationController:
 
     def show(self, view: View):
         """ Show Login Page """
-        return view.render('/dashboard/_dashboard/login')
+        return view.render('/dashboard/templates/dashboard/login')
 
     def authenticate(self, Request):
         user = Auth(Request).login(Request.input('username'), Request.input('password'))

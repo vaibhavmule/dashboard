@@ -18,7 +18,7 @@ class ModelLink(BaseLink):
 
 class Home(BaseLink):
     display = 'Home'
-    url = '/dashboard/home'
+    url = '/dashboard'
 
 class Logout(UserLink):
     display = 'Logout'
