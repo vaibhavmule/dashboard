@@ -1,4 +1,7 @@
-class Link:
+class BaseLink:
     display = ''
     url = ''
-    controller = ''
+
+class UserLink:
+    display = ''
+    url = ''

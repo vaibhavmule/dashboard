@@ -1,17 +1,25 @@
-from .Link import Link
+from .Link import BaseLink, UserLink
 
-class ExportLink(Link):
+class ExportLink(BaseLink):
     display = 'Export'
     url = 'http://google.com'
 
-class ModelLink(Link):
+class ModelLink(BaseLink):
     display = 'Models'
     url = '/dashboard'
 
-class ExportLink(Link):
+class ExportLink(BaseLink):
     display = 'Export'
     url = 'http://google.com'
 
-class ModelLink(Link):
+class ModelLink(BaseLink):
     display = 'Models'
     url = '/dashboard'
+
+class Home(BaseLink):
+    display = 'Home'
+    url = '/dashboard/home'
+
+class Logout(UserLink):
+    display = 'Logout'
+    url = '/logout'
