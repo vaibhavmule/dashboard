@@ -1,7 +1,6 @@
 ''' A User Model Service Provider '''
 from masonite.provider import ServiceProvider
 import os
-from config.dashboard import MODELS
 from .links import ExportLink, ModelLink, Home, Logout
 from .Link import BaseLink, UserLink
 
@@ -17,9 +16,6 @@ class DashboardProvider(ServiceProvider):
         self.app.make('Storage').STATICFILES.update({
             os.path.join(package_directory, 'static'): '_dashboard/' 
         })
-
-        # Register Models
-        self.app.bind('DashboardModels', MODELS)
 
         # Register Links
         self.app.bind('HomeLink', Home)
