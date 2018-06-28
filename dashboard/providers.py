@@ -28,10 +28,24 @@ class DashboardProvider(ServiceProvider):
         ViewClass.add_environment('dashboard/templates')
         ViewClass.composer(['/dashboard*', 'dashboard*'], {'nav_links': self.app.collect(BaseLink), 'user_links': self.app.collect(UserLink)})
 
-class Export:
+''' A UserManagementProvider Service Provider '''
+from dashboard.links import UserManagementLink, SwapUserLink
 
-    def register(app):
-        # app.bind('AnotherProviderNavLinks', [
-        #     ExportLink()
-        # ])
-        pass
+class UserManagementProvider(ServiceProvider):
+
+    wsgi = False
+
+    def register(self):
+        self.app.bind('UserManagementLink', UserManagementLink)
+        self.app.bind('SwapLink', SwapUserLink)
+
+    def boot(self, Request):
+        Request.extend(RealUser)
+
+class RealUser:
+
+    def real_user(self):
+        if self.get_cookie('_real_token'):
+            return User.where('remember_token', self.get_cookie('_real_token')).first()
+        
+        return None
