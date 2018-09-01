@@ -1,6 +1,6 @@
 ''' Welcome The User To Masonite '''
 from masonite.view import View
-from masonite.facades.Auth import Auth
+from masonite.auth import Auth
 
 
 class AuthenticationController:

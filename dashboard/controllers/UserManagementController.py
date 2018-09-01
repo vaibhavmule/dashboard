@@ -1,5 +1,5 @@
 """ User Management """
-from masonite.facades.Auth import Auth
+from masonite.auth import Auth
 from masonite.helpers import password
 from masonite.request import Request
 from masonite.view import View
