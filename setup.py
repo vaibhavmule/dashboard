@@ -5,7 +5,6 @@ setup(
     packages=[
         'dashboard',
         'dashboard.controllers',
-        'dashboard',
     ],
     version='0.1.3',
     install_requires=[
