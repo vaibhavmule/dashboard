@@ -1,6 +1,8 @@
-''' Welcome The User To Masonite '''
-from masonite.view import View
+"""Welcome The User To Masonite"""
+
 from masonite.auth import Auth
+from masonite.view import View
+from masonite.request import Request
 
 
 class AuthenticationController:
@@ -9,17 +11,17 @@ class AuthenticationController:
         """ Show Login Page """
         return view.render('/dashboard/templates/dashboard/login')
 
-    def authenticate(self, Request):
-        user = Auth(Request).login(Request.input('username'), Request.input('password'))
+    def authenticate(self, request: Request):
+        user = Auth(request).login(request.input('username'), request.input('password'))
         if user and user.is_admin:
-           return Request.redirect('/dashboard')
+           return request.redirect('/dashboard')
         elif not user:
-            Request.session.flash('danger', 'Username or password is incorrect')
+            request.session.flash('danger', 'Username or password is incorrect')
         else:
-            Request.session.flash('danger', 'User does not have admin priviledges')
+            request.session.flash('danger', 'User does not have admin priviledges')
         
-        Request.redirect('/dashboard/login')   
+        request.redirect('/dashboard/login')   
 
-    def logout(self, Request):
-        Auth(Request).logout()
-        return Request.redirect('/dashboard/login')
+    def logout(self, request: Request):
+        Auth(request).logout()
+        return request.redirect('/dashboard/login')
