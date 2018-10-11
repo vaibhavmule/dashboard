@@ -22,8 +22,8 @@ class DashboardProvider(ServiceProvider):
 
     def boot(self, Storage, ViewClass):
         ViewClass.add_environment('dashboard/templates')
-        ViewClass.composer(['/dashboard*', 'dashboard*'], {'nav_links': self.app.collect(BaseLink), 'user_links': self.app.collect(UserLink)})
-
+        ViewClass.composer(['/dashboard*', 'dashboard*'], {'nav_links': self.app.collect(BaseLink), 'user_links': self.app.collect(UserLink)}
+        
 ''' A UserManagementProvider Service Provider '''
 from dashboard.links import UserManagementLink, SwapUserLink
 
@@ -38,6 +38,7 @@ class UserManagementProvider(ServiceProvider):
     def boot(self, Request):
         Request.extend(RealUser)
 
+
 class RealUser:
 
     def real_user(self):
@@ -45,3 +46,17 @@ class RealUser:
             return User.where('remember_token', self.get_cookie('_real_token')).first()
         
         return None
+
+ 
+"""A HelloProvider Service Provider"""
+from dashboard.commands.CreateAdminUserCommand import CreateAdminUserCommand
+
+class HelloProvider(ServiceProvider):
+
+    wsgi = False
+
+    def register(self):
+        self.app.bind('MasoniteCreateAdminUserCommand', CreateAdminUserCommand())
+
+    def boot(self):
+        pass
