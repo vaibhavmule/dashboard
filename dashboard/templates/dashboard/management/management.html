@@ -43,14 +43,14 @@
                     </div>
                     <div class="col-xs-2">
                         <form action="/dashboard/management/login_as_user" method="POST" style="display: inline">
-                            {{ csrf_field|safe }}
+                            {{ csrf_field }}
                             <input type="hidden" value="{{ user.id }}" name="user">
                             <button class="btn btn-primary" title="Login as {{ user.name}}">
                                 <span class="fa fa-user"></span>
                             </button>
                         </form>
                         <form action="/dashboard/management/delete" method="POST" style="display: inline">
-                            {{ csrf_field|safe }}
+                            {{ csrf_field }}
                             <input type="hidden" value="{{ user.id }}" name="user">
                             <button class="btn btn-danger" title="Delete {{ user.name}}">
                                 <span class="fa fa-times"></span>
