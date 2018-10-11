@@ -8,7 +8,7 @@
         <div class="panel-body">
 
             <form action="/dashboard/login" method="POST">
-                {{ csrf_field|safe }}
+                {{ csrf_field }}
                 <h4>Login</h4><hr>
                 {% if session().has('danger') %}
                     <div class="alert alert-danger">{{ session().get('danger') }} </div>
